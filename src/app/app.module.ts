@@ -4,13 +4,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatInputModule } from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { QueryBoxComponent } from './components/query-box/query-box.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QueryBoxComponent,
+    ActionButtonsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule,
+    MatInputModule,
+    FormsModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,37 @@
+.box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field {
+  &--desc {
+    width: 400px;
+  }
+
+  &--weight {
+    width: 70px;
+  }
+}
+
+.handle {
+  color: #999999;
+  cursor: move;
+  transition: color .5s;
+
+  &:hover,
+  &:active {
+    color: black;
+  }
+}
+
+::ng-deep .mat-form-field-wrapper{
+  margin-bottom: -1.25em;
+}
+
+.drag-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 54px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
