@@ -1,21 +1,33 @@
-<div class="box" cdkDrag>
+<div class="main-box" cdkDrag>
   <div class="drag-placeholder" *cdkDragPlaceholder></div>
   <button class="handle" mat-icon-button cdkDragHandle>
     <mat-icon>control_camera</mat-icon>
   </button>
-  <mat-form-field class="field field--desc" appearance="fill">
-    <mat-label>Describe your prompt</mat-label>
-    <input matInput type="text" [(ngModel)]="queryText">
-    <button *ngIf="queryText" matSuffix mat-icon-button aria-label="Clear" (click)="queryText=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <mat-form-field class="field field--weight" appearance="fill">
-    <mat-label>Weight</mat-label>
-    <input matInput type="number" [(ngModel)]="queryWeight">
-  </mat-form-field>
-  <action-buttons
-    (onClickAdd$)="onClickAddNewQuery$.emit(id)"
-    (onClickDelete$)="onClickRemoveQuery$.emit(id)"
-  ></action-buttons>
+  <div class="row image-refs">
+    <image-ref
+      *ngFor="let imgRef of imgRefs; let i = index; trackBy:trackByIdx"
+      [showAdd]="canAddImageRef"
+      [showDel]="imgRefs.length >= 2"
+      (onUrlChange$)="updateUrl(i, $event)"
+      (onClickAdd$)="addImageRefField()"
+      (onClickRemove$)="removeImageRefField(i)"
+    ></image-ref>
+  </div>
+  <div class="row main-content">
+    <mat-form-field class="field field--desc" appearance="fill">
+      <mat-label>Describe your prompt</mat-label>
+      <input matInput type="text" [(ngModel)]="queryText">
+      <button *ngIf="queryText" matSuffix mat-icon-button aria-label="Clear" (click)="queryText=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="field field--weight" appearance="fill">
+      <mat-label>Weight</mat-label>
+      <input matInput type="number" [(ngModel)]="queryWeight">
+    </mat-form-field>
+    <action-buttons
+      (onClickAdd$)="onClickAddNewQuery$.emit(id)"
+      (onClickDelete$)="onClickRemoveQuery$.emit(id)"
+    ></action-buttons>
+  </div>
 </div>

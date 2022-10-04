@@ -1,0 +1,33 @@
+<div class="image-ref">
+  <img
+    *ngIf="isPreviewVisible"
+    [src]="url"
+    class="preview"
+  >
+  <mat-form-field class="field field--desc" appearance="fill">
+    <mat-label>URL on image reference</mat-label>
+    <mat-icon
+      [class.has-ref]="isRefUrlValid"
+      (mouseover)="mouseOverRefIcon()"
+      (mouseout)="mouseOutRefIcon()"
+      matPrefix
+      class="image-icon"
+    >image</mat-icon>
+    <input matInput type="text" [ngModel]="url" (ngModelChange)="onUrlChanged($event)">
+    <button
+      *ngIf="url"
+      (click)="url = ''"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <action-buttons
+    [showDelete]="showDel"
+    [showAdd]="showAdd"
+    (onClickAdd$)="onClickAdd$.emit()"
+    (onClickDelete$)="onClickRemove$.emit()"
+  ></action-buttons>
+</div>

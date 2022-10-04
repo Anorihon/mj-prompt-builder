@@ -1,0 +1,30 @@
+.preview {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  max-width: 300px;
+  height: auto;
+  z-index: 100;
+}
+
+.image-ref {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.image-icon {
+  color: #999999;
+  transition: color .5s;
+
+  &.has-ref {
+    cursor: zoom-in;
+    color: black;
+  }
+}
+
+.field {
+  width: 400px;
+}

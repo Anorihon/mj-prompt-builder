@@ -1,8 +1,18 @@
 <div class="buttons">
-  <button mat-mini-fab (click)="onClickDelete$.emit()" color="warn">
+  <button
+    *ngIf="showDelete"
+    (click)="onClickDelete$.emit()"
+    mat-mini-fab
+    color="warn"
+  >
     <mat-icon>delete</mat-icon>
   </button>
-  <button mat-mini-fab (click)="onClickAdd$.emit()" color="primary">
+  <button
+    *ngIf="showAdd"
+    (click)="onClickAdd$.emit()"
+    mat-mini-fab
+    color="primary"
+  >
     <mat-icon>add</mat-icon>
   </button>
 </div>

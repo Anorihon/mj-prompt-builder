@@ -10,18 +10,22 @@ import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { QueryBoxComponent } from './components/query-box/query-box.component';
 import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+import { ImageRefComponent } from './components/image-ref/image-ref.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     QueryBoxComponent,
-    ActionButtonsComponent
+    ActionButtonsComponent,
+    ImageRefComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     DragDropModule,
     MatInputModule,
     FormsModule,

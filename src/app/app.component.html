@@ -1,9 +1,8 @@
-<query-box></query-box>
-<query-box></query-box>
-
-<!--<div cdkDropList class="example-list">-->
-<!--  <query-box></query-box>-->
-<!--</div>-->
+<div cdkDropList class="queries-list" (cdkDropListDropped)="drop($event)">
+  <query-box
+    *ngFor="let query of queries; let i = index; trackBy:trackByIdx"
+  ></query-box>
+</div>
 
 
 <!--<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">-->

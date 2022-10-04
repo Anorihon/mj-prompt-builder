@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'action-buttons',
@@ -7,6 +7,9 @@ import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActionButtonsComponent implements OnInit {
+  @Input() showDelete = true;
+  @Input() showAdd = true;
+
   @Output() onClickDelete$ = new EventEmitter<void>();
   @Output() onClickAdd$ = new EventEmitter<void>();
 
