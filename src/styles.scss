@@ -34,9 +34,15 @@ $mj-prompt-builder-theme: mat.define-light-theme((
 @include mat.all-component-themes($mj-prompt-builder-theme);
 
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 ul {
   margin: 0;

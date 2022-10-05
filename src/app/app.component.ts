@@ -43,9 +43,15 @@ export class AppComponent {
       hint: 'Kind of experimental, might be more creative or detailed... also might be worse! (5 GPU minutes per /imagine)',
     },
   ];
+  readonly stylizeSettings = {
+    min: 625,
+    default: 2500,
+    max: 60000,
+  };
 
   customParams: string = '';
   aspectRatio: string[] = ['', ''];
+  stylize = this.stylizeSettings.default;
   qualityValue = 1;
 
   constructor(
@@ -95,6 +101,14 @@ export class AppComponent {
 
     if (this.qualityValue !== 1) {
       text += `--q ${this.qualityValue} `;
+    }
+
+    if (
+      this.stylize !== this.stylizeSettings.default
+      && this.stylize >= this.stylizeSettings.min
+      && this.stylize <= this.stylizeSettings.max
+    ) {
+      text += `--s ${this.stylize} `;
     }
 
     return text.trim();
