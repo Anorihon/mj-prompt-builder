@@ -16,18 +16,19 @@
   <div class="row main-content">
     <mat-form-field class="field field--desc" appearance="fill">
       <mat-label>Describe your prompt</mat-label>
-      <input matInput type="text" [(ngModel)]="queryText">
-      <button *ngIf="queryText" matSuffix mat-icon-button aria-label="Clear" (click)="queryText=''">
+      <input matInput type="text" [ngModel]="queryText" (ngModelChange)="onTextChanged($event)">
+      <button *ngIf="queryText" matSuffix mat-icon-button aria-label="Clear" (click)="onTextChanged('')">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
     <mat-form-field class="field field--weight" appearance="fill">
       <mat-label>Weight</mat-label>
-      <input matInput type="number" [(ngModel)]="queryWeight">
+      <input matInput type="number" [ngModel]="queryWeight" (ngModelChange)="onWeightChanged($event)">
     </mat-form-field>
     <action-buttons
-      (onClickAdd$)="onClickAddNewQuery$.emit(id)"
-      (onClickDelete$)="onClickRemoveQuery$.emit(id)"
+      [showDelete]="canDel"
+      (onClickAdd$)="addNewQuery()"
+      (onClickDelete$)="removeQuery()"
     ></action-buttons>
   </div>
 </div>

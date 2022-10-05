@@ -1,13 +1,7 @@
 <div cdkDropList class="queries-list" (cdkDropListDropped)="drop($event)">
   <query-box
-    *ngFor="let query of queries; let i = index; trackBy:trackByIdx"
+    *ngFor="let item of list; let i = index; trackBy:trackByIdx"
+    [id]="item.id"
+    [canDel]="canRemoveQuery"
   ></query-box>
 </div>
-
-
-<!--<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">-->
-<!--  <div class="example-box" *ngFor="let movie of movies" cdkDrag>-->
-<!--    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>-->
-<!--    {{movie}}-->
-<!--  </div>-->
-<!--</div>-->

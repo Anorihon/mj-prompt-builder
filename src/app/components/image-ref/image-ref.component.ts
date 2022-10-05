@@ -35,8 +35,8 @@ export class ImageRefComponent implements OnInit {
     this.isPreviewVisible = false;
   }
 
-  onUrlChanged(e: string) {
-    this.url = e;
+  onUrlChanged(value: string) {
+    this.url = value;
     this.onUrlChange$.emit(this.url);
   }
 }

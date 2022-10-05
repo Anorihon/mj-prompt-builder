@@ -16,7 +16,7 @@
     <input matInput type="text" [ngModel]="url" (ngModelChange)="onUrlChanged($event)">
     <button
       *ngIf="url"
-      (click)="url = ''"
+      (click)="onUrlChanged('')"
       matSuffix
       mat-icon-button
       aria-label="Clear"
