@@ -1,7 +1,97 @@
-<div cdkDropList class="queries-list" (cdkDropListDropped)="drop($event)">
-  <query-box
-    *ngFor="let item of list; let i = index; trackBy:trackByIdx"
-    [id]="item.id"
-    [canDel]="canRemoveQuery"
-  ></query-box>
-</div>
+<section>
+  <h2>Prompt</h2>
+  <div cdkDropList class="queries-list" (cdkDropListDropped)="drop($event)">
+    <query-box
+      *ngFor="let item of list; let i = index; trackBy:trackByIdx"
+      [id]="item.id"
+      [canDel]="canRemoveQuery"
+    ></query-box>
+  </div>
+</section>
+<section>
+  <h2>Params</h2>
+  <div class="row">
+    <mat-form-field class="field" appearance="fill">
+      <mat-label>Custom</mat-label>
+      <input matInput type="text" [(ngModel)]="customParams">
+      <button *ngIf="customParams" matSuffix mat-icon-button aria-label="Clear" (click)="customParams=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <h3>Stylize Values</h3>
+    https://midjourney.gitbook.io/docs/user-manual#stylize-values
+  </div>
+  <div class="row">
+    <h3>
+      <span>Quality Values</span>
+      <a
+        title="Official docs"
+        href="https://midjourney.gitbook.io/docs/user-manual#quality-values"
+        target="_blank"
+      >
+        <mat-icon>open_in_new</mat-icon>
+      </a>
+    </h3>
+    <mat-radio-group [(ngModel)]="qualityValue" class="radio-group">
+      <mat-radio-button class="radio-button" *ngFor="let option of qualityOptions" [value]="option.value">
+        {{ option.value }} - {{ option.hint }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="row aspect-ratio">
+    <h3>Aspect Ratio</h3>
+    <div class="aspect-ratio__fields">
+      <mat-form-field class="field" appearance="fill">
+        <input
+          matInput
+          type="number"
+          min="1"
+          max="21"
+          [(ngModel)]="aspectRatio[0]"
+        >
+      </mat-form-field>
+      <div class="delimiter">:</div>
+      <mat-form-field class="field" appearance="fill">
+        <input
+          matInput
+          type="number"
+          min="1"
+          max="21"
+          [(ngModel)]="aspectRatio[1]"
+        >
+      </mat-form-field>
+      <button
+        *ngIf="isAspectRatioValid"
+        (click)="resetAspectRatio()"
+        mat-mini-fab
+        color="warn"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <ul class="list">
+      <li *ngFor="let ar of arTemplates">
+        <div
+          [style.aspect-ratio]="ar[0] + ' / ' + ar[1]"
+          (click)="presetAspectRatio(ar)"
+          class="aspect-ratio__box"
+        >
+          <div class="text">{{ ar[0] + ':' + ar[1] }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<section>
+  <h2>Result</h2>
+  <textarea
+    class="result-field"
+    matInput
+    readonly
+    #resultField
+    (click)="resultField.select();"
+  >{{ result }}</textarea>
+  <button [cdkCopyToClipboard]="result">Copy to clipboard</button>
+</section>

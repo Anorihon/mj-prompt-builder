@@ -37,3 +37,38 @@ $mj-prompt-builder-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: block;
+  list-style: none;
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  > a {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+//<editor-fold desc="Remove input padding">
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.mat-form-field-underline {
+  bottom: 0;
+}
+//</editor-fold>
+
+.field {
+  width: 400px;
+}

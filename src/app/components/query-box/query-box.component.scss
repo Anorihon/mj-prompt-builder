@@ -52,15 +52,6 @@
   }
 }
 
-//<editor-fold desc="Remove input padding">
-::ng-deep .mat-form-field-wrapper {
-  padding-bottom: 0;
-}
-::ng-deep .mat-form-field-underline {
-  bottom: 0;
-}
-//</editor-fold>
-
 .drag-placeholder {
   background: #ccc;
   border: dotted 3px #999;
