@@ -16,6 +16,7 @@ import {QueriesService, QueryId} from '../../shared/services/queries.service';
 export class QueryBoxComponent implements OnInit {
   @Input() id: QueryId = 1;
   @Input() canDel = true;
+  @Input() weightVisible = true;
 
   readonly MAX_IMAGE_REFS = 5;
 

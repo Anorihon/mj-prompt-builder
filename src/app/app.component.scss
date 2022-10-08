@@ -40,6 +40,10 @@ section .row:not(:first-child) {
   margin-top: 30px;
 }
 
+.row--weight {
+  margin-bottom: 20px;
+}
+
 //<editor-fold desc="Aspect Ratio">
 .aspect-ratio > .list {
   display: flex;

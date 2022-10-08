@@ -1,5 +1,5 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {IQuery, QueriesService} from './shared/services/queries.service';
 
 interface IQuality {
@@ -49,6 +49,7 @@ export class AppComponent {
     max: 60000,
   };
 
+  multiPrompt = true;
   customParams: string = '';
   aspectRatio: string[] = ['', ''];
   stylize = this.stylizeSettings.default;
@@ -75,6 +76,7 @@ export class AppComponent {
     let text = '';
 
     for (let i = 0; i < this.list.length; i++) {
+      const isLast = i === this.list.length - 1;
       const query = this.list[i];
 
       if (query.description.length === 0) continue;
@@ -87,7 +89,13 @@ export class AppComponent {
         text += imgRef + ' ';
       }
 
-      text += `${query.description} ::${query.weight} `;
+      text += query.description;
+
+      if (this.multiPrompt) {
+        text += ` ::${query.weight} `;
+      } else {
+        text += isLast ? ' ' : ', ';
+      }
     }
 
     if (this.customParams) {

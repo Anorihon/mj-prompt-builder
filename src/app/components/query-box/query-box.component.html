@@ -21,7 +21,11 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <mat-form-field class="field field--weight" appearance="fill">
+    <mat-form-field
+      *ngIf="weightVisible"
+      class="field field--weight"
+      appearance="fill"
+    >
       <mat-label>Weight</mat-label>
       <input matInput type="number" [ngModel]="queryWeight" (ngModelChange)="onWeightChanged($event)">
     </mat-form-field>
